@@ -66,9 +66,18 @@ namespace Codex.SalarySurvey.API
             };
 
             // Register the Swagger generator, defining 1 or more Swagger documents.
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Salary Survey APIs", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Salary Survey APIs", Version = "v1" });
+
+                // Define the BearerAuth scheme that's in use.
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    Name = "Authorization",
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                });
             });
 
             // Jwt wire up.
@@ -163,7 +172,7 @@ namespace Codex.SalarySurvey.API
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Salary Survey APIs V1");
+                c.SwaggerEndpoint("../swagger/v1/swagger.json", "Salary Survey APIs V1");
             });
 
             app.UseSwagger();
