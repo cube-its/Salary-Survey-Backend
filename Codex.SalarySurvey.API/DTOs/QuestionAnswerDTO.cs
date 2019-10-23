@@ -11,5 +11,6 @@ namespace Codex.SalarySurvey.API.DTOs
     {
         public int SurveyQuestionId { get; set; }
         public string Answer { get; set; }
+        public int? EmployerId { get; set; }
     }
 }

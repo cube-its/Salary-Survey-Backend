@@ -28,6 +28,7 @@ namespace Codex.SalarySurvey.Data.Repositories
                           Placeholder = a.Placeholder,
                           ToolTip = a.ToolTip,
                           Answer = b.QuestionAnswers.FirstOrDefault(c => c.UserId == userId).Answer,
+                          EmployerId = b.QuestionAnswers.FirstOrDefault(c => c.UserId == userId).EmployerId,
                           Type = (QuestionType)a.Type,
                           Params = a.Params,
                           IsRequired = a.IsRequired,

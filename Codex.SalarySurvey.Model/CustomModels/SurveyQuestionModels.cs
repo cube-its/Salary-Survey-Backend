@@ -17,6 +17,7 @@ namespace Codex.SalarySurvey.Model
         public string Placeholder { get; set; }
         public string ToolTip { get; set; }
         public string Answer { get; set; }
+        public int? EmployerId { get; set; }
         public QuestionType Type { get; set; }
         public bool IsRequired { get; set; }
         public string RegEx { get; set; }

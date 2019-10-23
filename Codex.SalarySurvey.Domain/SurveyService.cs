@@ -106,6 +106,7 @@ namespace Codex.SalarySurvey.Domain
                 {
                     tmp = answers.FirstOrDefault(a => a.SurveyQuestionId == ans.SurveyQuestionId);
                     ans.Answer = tmp?.Answer;
+                    ans.EmployerId = tmp?.EmployerId;
 
                     _questionAnswerRepository.Update(ans);
                 }
