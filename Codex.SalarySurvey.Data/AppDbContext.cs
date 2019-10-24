@@ -16,6 +16,7 @@ namespace Codex.SalarySurvey.Data
         {
         }
 
+        public virtual DbSet<Employer> Employers { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<QuestionAnswer> QuestionAnswers { get; set; }
         public virtual DbSet<QuestionOption> QuestionOptions { get; set; }
@@ -34,6 +35,18 @@ namespace Codex.SalarySurvey.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Employer>(entity =>
+            {
+                entity.HasIndex(e => e.EmployerId)
+                    .HasName("IX_Employers_ID");
+
+                entity.Property(e => e.EmployerId).HasColumnName("EmployerID");
+
+                entity.Property(e => e.EmployerName).HasMaxLength(500);
+
+                entity.Property(e => e.EmployerOriginalNameHeb).HasMaxLength(500);
+            });
+
             modelBuilder.Entity<Question>(entity =>
             {
                 entity.Property(e => e.CreatedOn).HasColumnType("datetime");
