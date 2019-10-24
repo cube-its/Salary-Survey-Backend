@@ -23,7 +23,7 @@ namespace Codex.SalarySurvey.Data.Repositories
                     {
                         EmployerId = a.EmployerId,
                         EmployerName = a.EmployerOriginalNameHeb
-                    }).ToList();
+                    }).Take(10).ToList();
         }
     }
 }
