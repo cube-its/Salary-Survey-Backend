@@ -134,11 +134,13 @@ namespace Codex.SalarySurvey.API
 
             // Register Services.
             services.AddTransient<ISecurityService, SecurityService>();
+            services.AddTransient<IEmployerService, EmployerService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ISurveyService, SurveyService>();
             services.AddTransient<ISurveyQuestionService, SurveyQuestionService>();
 
             // Register Repositories.
+            services.AddTransient<IEmployerRepository, EmployerRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<ISurveyRepository, SurveyRepository>();
             services.AddTransient<ISurveyQuestionRepository, SurveyQuestionRepository>();

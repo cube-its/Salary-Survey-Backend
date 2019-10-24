@@ -17,6 +17,7 @@ namespace Codex.SalarySurvey.API.Mappings
 
         public DomainToDTOMappingProfile()
         {
+            CreateMap<DetailedEmployer, EmployerGetDTO>();
             CreateMap<User, UserLoginResultDTO>();
             CreateMap<User, UserRegisterResultDTO>();
             CreateMap<QuestionsSurvey, GetSurveyDTO>();
