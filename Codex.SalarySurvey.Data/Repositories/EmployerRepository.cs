@@ -18,6 +18,7 @@ namespace Codex.SalarySurvey.Data.Repositories
             return (from a in DbContext.Employers
                     where string.IsNullOrEmpty(filter)
                     || a.EmployerOriginalNameHeb.StartsWith(filter)
+                    orderby a.Popularity ascending
                     select new DetailedEmployer
                     {
                         EmployerId = a.EmployerId,
