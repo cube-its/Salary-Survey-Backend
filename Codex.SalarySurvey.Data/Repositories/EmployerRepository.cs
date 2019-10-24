@@ -16,8 +16,9 @@ namespace Codex.SalarySurvey.Data.Repositories
         public IEnumerable<DetailedEmployer> GetEmployers(string filter = null)
         {
             return (from a in DbContext.Employers
-                    where string.IsNullOrEmpty(filter)
-                    || a.EmployerOriginalNameHeb.StartsWith(filter)
+                    where (string.IsNullOrEmpty(filter)
+                    || a.EmployerOriginalNameHeb.StartsWith(filter))
+                    && !a.EmployerOriginalNameHeb.ToLower().Contains("test")
                     orderby a.Popularity ascending
                     select new DetailedEmployer
                     {
