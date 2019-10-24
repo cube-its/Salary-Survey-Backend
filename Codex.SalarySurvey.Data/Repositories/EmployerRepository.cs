@@ -16,7 +16,8 @@ namespace Codex.SalarySurvey.Data.Repositories
         public IEnumerable<DetailedEmployer> GetEmployers(string filter = null)
         {
             return (from a in DbContext.Employers
-                    where string.IsNullOrEmpty(filter) || a.EmployerOriginalNameHeb.Contains(filter)
+                    where string.IsNullOrEmpty(filter)
+                    || a.EmployerOriginalNameHeb.StartsWith(filter)
                     select new DetailedEmployer
                     {
                         EmployerId = a.EmployerId,
